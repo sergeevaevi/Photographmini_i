@@ -1,0 +1,42 @@
+@import "../../styles/colors.module";
+
+.main {
+  display: flex;
+  flex-direction: column-reverse;
+
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+
+  background: $background-dark;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  max-width: 100%;
+  padding-bottom: 40px;
+  margin: 12px 0 30px;
+
+  &__landing {
+    display: none;
+  }
+}
+
+
+.button {
+  &__active {
+    background-color: rgba($secondary, 0.5) !important;
+    color: $main !important;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}

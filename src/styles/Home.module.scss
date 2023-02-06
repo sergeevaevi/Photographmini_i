@@ -1,0 +1,91 @@
+@import "colors.module";
+
+.main {
+  background-image: url("../assets/me.jpg");
+  background-position: center;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  padding: 0 40px 80px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: flex-end;
+
+  &__title {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 38px;
+    line-height: 59px;
+  }
+
+  &__subtitle {
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 27px;
+
+    margin-bottom: 20px;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-rows: repeat(2, minmax(50%, auto));
+  max-width: 100%;
+}
+
+.button {
+  &__wrapper {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  &__portfolio {
+    background-color: $secondary !important;
+    color: $main !important;
+    @media (min-width: 900px) {
+      background-color: $main !important;
+      color: $secondary !important;
+
+    }
+  }
+
+  &__contact {
+    background-color: rgba($secondary, 0.5) !important;
+    color: $main !important;
+
+    @media (min-width: 900px) {
+      background-color: rgba($secondary, 1) !important;
+    }
+  }
+
+}
+
+.portfolio {
+  padding: 24px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  overflow: scroll;
+}
+
+.contact {
+  &__card {
+    display: flex;
+    align-items: center;
+    gap: 12px
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+    gap: 40px;
+  }
+}

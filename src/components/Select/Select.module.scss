@@ -1,0 +1,50 @@
+@import "../../styles/colors.module";
+
+.select {
+  & div[class*="control"] {
+    display: flex;
+    background: none;
+    border: none;
+    box-shadow: none;
+    font-weight: 600;
+    width: 100%;
+
+    & div[class*="singleValue"] {
+      color: $secondary;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 22px;
+    }
+
+    &:focus, :active, :focus-visible {
+      border: none;
+      outline: none;
+    }
+  }
+
+  & div[class*="menu"] {
+    background: $main;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 22px;
+    border-radius: 5px;
+
+    & div[class*="selected"] {
+      background-color: red;
+    }
+  }
+
+  &__wrapper {
+    border-bottom: 2px solid white;
+
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  &__option {
+    background-color: $main;
+  }
+}

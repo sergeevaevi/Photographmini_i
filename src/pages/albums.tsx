@@ -25,12 +25,21 @@ export default function Albums({albums}: { albums: TAlbum[] }) {
 }
 
 export const getStaticProps: GetStaticProps<{ albums: TAlbum[] }> = async (context) => {
-    const res = axios.get(`https://api.vk.com/method/photos.getAlbums?owner_id=-${process.env.NEXT_PUBLIC_OWNER_ID}&access_token=${process.env.NEXT_PUBLIC_ACCESS_TOKEN}&v=${process.env.NEXT_PUBLIC_VK_VERSION}`).then(res => res.data);
-    const albums: TAlbum[] = await res.then(res => res.response.items);
+    try {
+        const res = axios.get(`https://api.vk.com/method/photos.getAlbums?owner_id=-${process.env.NEXT_PUBLIC_OWNER_ID}&access_token=${process.env.NEXT_PUBLIC_ACCESS_TOKEN}&v=${process.env.NEXT_PUBLIC_VK_VERSION}`).then(res => res.data);
+        const albums: TAlbum[] = await res.then(res => res.response.items);
 
-    return {
-        props: {
-            albums,
-        },
+        return {
+            props: {
+                albums,
+            },
+        }
+    } catch {
+        return {
+            props: {
+                albums: []
+            }
+        }
     }
+
 }

@@ -13,7 +13,7 @@ export default function Photos({photos}: { photos: TPhoto[] }) {
                 <div className={styles.grid}>
                     Фото
                     <div>
-                        {photos && photos?.map((e: TPhoto, i: number) => <PhotoCard key={i} img={e}/>
+                        {photos?.length && photos?.map((e: TPhoto, i: number) => <PhotoCard key={i} img={e}/>
                         )}
                     </div>
                 </div>
@@ -24,21 +24,33 @@ export default function Photos({photos}: { photos: TPhoto[] }) {
 
 
 export async function getStaticPaths() {
-    const res = axios.get(`https://api.vk.com/method/photos.getAlbums?owner_id=-${process.env.NEXT_PUBLIC_OWNER_ID}&access_token=${process.env.NEXT_PUBLIC_ACCESS_TOKEN}&v=${process.env.NEXT_PUBLIC_VK_VERSION}`).then(res => res.data);
-    const albums: TAlbum[] = await res.then(res => res.response?.items);
-    const paths = albums?.map((album) => ({
-        params: {id: album?.id?.toString()},
-    }))
-    console.log(process.env.NEXT_PUBLIC_OWNER_ID, process.env.NEXT_PUBLIC_ACCESS_TOKEN)
-    return {paths, fallback: false}
+    try {
+        const res = axios.get(`https://api.vk.com/method/photos.getAlbums?owner_id=-${process.env.NEXT_PUBLIC_OWNER_ID}&access_token=${process.env.NEXT_PUBLIC_ACCESS_TOKEN}&v=${process.env.NEXT_PUBLIC_VK_VERSION}`).then(res => res.data);
+        const albums: TAlbum[] = await res.then(res => res.response?.items);
+        const paths = albums?.map((album) => ({
+            params: {id: album?.id?.toString()},
+        }))
+        return {paths, fallback: false}
+    } catch {
+        return {paths: [], fallback: false}
+    }
+
 }
 
 export const getStaticProps: GetStaticProps<{ photos: TPhoto[] }> = async (
     context
 ) => {
-    const res = axios.get(`https://api.vk.com/method/photos.get?owner_id=-${process.env.NEXT_PUBLIC_OWNER_ID}&access_token=${process.env.NEXT_PUBLIC_ACCESS_TOKEN}&v=${process.env.NEXT_PUBLIC_VK_VERSION}&album_id=${context.params?.id}`).then(res => res.data);
-    const photos: TPhoto[] = await res.then(res => res.response?.items);
-    console.log(process.env.NEXT_PUBLIC_OWNER_ID, process.env.NEXT_PUBLIC_ACCESS_TOKEN)
+    try {
+        const res = axios.get(`https://api.vk.com/method/photos.get?owner_id=-${process.env.NEXT_PUBLIC_OWNER_ID}&access_token=${process.env.NEXT_PUBLIC_ACCESS_TOKEN}&v=${process.env.NEXT_PUBLIC_VK_VERSION}&album_id=${context.params?.id}`).then(res => res.data);
+        const photos: TPhoto[] = await res.then(res => res.response?.items);
+        const allPhotos = JSON.parse(JSON.stringify(photos));
+        return {props: {photos: allPhotos}}
+    } catch {
+        return {
+            props: {
+                photos: []
+            }
+        }
+    }
 
-    return {props: {photos}}
 }

@@ -8,7 +8,7 @@ import Link from "next/link";
 import {Input} from "../components/Input/Input";
 import {SubmitHandler, useForm} from "react-hook-form";
 import {Select} from "../components/Select/Select";
-import {sendContactForm} from "./api/api"
+import {useRouter} from "next/router";
 
 type Inputs = {
     name: string,
@@ -24,8 +24,10 @@ const ContactCards = ({media}: { media: { icon: any, title: string, text?: strin
 
 export default function Contact() {
     const {register, handleSubmit, watch, control, formState: {errors}} = useForm<Inputs>({mode: 'onChange'});
+    const router = useRouter()
     const onSubmit: SubmitHandler<Inputs> = async data => {
-        await sendContactForm(data);
+        // await sendContactForm(data);
+        router.push(`contact/${data.name}/${data.number}/${data.place}`)
     };
 
     return (

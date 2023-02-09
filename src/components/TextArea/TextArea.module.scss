@@ -1,13 +1,21 @@
 @import "../../styles/colors.module";
 
-
-.input {
+.textarea {
   display: flex;
   background: none;
   border: none;
   align-items: center;
   font-weight: 600;
-  padding: 10px 0;
+  width: 100%;
+  max-width: 100%;
+  min-width: 100%;
+  resize: none;
+  height: 100%;
+  padding: 10px 0 20px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   &:focus, :active, :focus-visible {
     border: none;
@@ -21,36 +29,15 @@
       border-radius: 5px;
     }
     padding: 0 10px;
-    position: relative;
+    overflow: hidden;
     font-family: 'Open Sans', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 16px;
     line-height: 22px;
 
-    &_submit {
-      border: none;
-      padding: 0;
-
-      & input {
-        background: $secondary;
-        padding: 11px;
-        color: $main;
-        width: 100%;
-        justify-content: center;
-        border-radius: 5px;
-      }
-
-    }
-  }
-
-  &__message {
-    position: absolute;
-    top: calc(100% + 8px);
-
-    color: $accent;
-    font-size: 14px;
-    line-height: 16px;
 
   }
+
+
 }

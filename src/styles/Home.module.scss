@@ -44,6 +44,7 @@
     gap: 20px;
     align-items: center;
     justify-content: flex-start;
+
   }
 
   &__portfolio {
@@ -73,13 +74,40 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 12px;
   overflow: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .contact {
+  @media (min-width: 900px) {
+    width: 100%;
+    padding: 44px;
+  }
+
   &__card {
     display: flex;
     align-items: center;
     gap: 12px
+  }
+
+  &__cards {
+    display: flex;
+    justify-content: center;
+
+    & p {
+      display: none;
+    }
+
+    @media (min-width: 900px) {
+      margin-top: 44px;
+      align-items: center;
+      gap: 44px;
+      & p {
+        display: block;
+      }
+    }
   }
 
   &__form {
@@ -87,5 +115,25 @@
     flex-direction: column;
     padding: 20px 0;
     gap: 40px;
+    @media (min-width: 900px) {
+      display: grid;
+      grid-template-areas: "nm msg" "nb msg" "pc msg";
+    }
+  }
+
+  &_place {
+    grid-area: pc;
+  }
+
+  &_message {
+    grid-area: msg;
+  }
+
+  &_tel {
+    grid-area: nb;
+  }
+
+  &_name {
+    grid-area: nm;
   }
 }

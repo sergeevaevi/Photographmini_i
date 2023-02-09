@@ -9,38 +9,48 @@ import {Input} from "../components/Input/Input";
 import {SubmitHandler, useForm} from "react-hook-form";
 import {Select} from "../components/Select/Select";
 import {useRouter} from "next/router";
+import {TextArea} from "../components/TextArea/TextArea";
 
 type Inputs = {
     name: string,
     number: number,
     place: string;
+    message: string;
 }
 
-const ContactCards = ({media}: { media: { icon: any, title: string, text?: string, link: string }[] }) => <>{media.map((e, i) =>
-    <Link key={i} href={e.link} className={styles.contact__card}>
-        <Image src={e.icon} alt={e.title}/>
-        {e.text && <p>{e.text}</p>}
-    </Link>)}</>;
+const mapPlaceToMail: { [key: string]: string } = {
+    street: "Улица",
+    cafe: 'Кафе',
+    other: "Было бы здорово уточнить детали, потому что все ",
+    studio: "Студия",
+}
+
+const ContactCards = ({media}: { media: { icon: any, title: string, text?: string, link: string }[] }) =>
+    <div className={styles.contact__cards}>{media.map((e, i) =>
+        <Link key={i} href={e.link} className={styles.contact__card}>
+            <Image src={e.icon} alt={e.title}/>
+            {e.text && <p>{e.text}</p>}
+        </Link>)}</div>;
 
 export default function Contact() {
     const {register, handleSubmit, watch, control, formState: {errors}} = useForm<Inputs>({mode: 'onChange'});
     const router = useRouter()
-    const onSubmit: SubmitHandler<Inputs> = async data => {
-        // await sendContactForm(data);
-        router.push(`contact/${data.name}/${data.number}/${data.place}`)
+    const onSubmit: SubmitHandler<Inputs> = data => {
+        router.push(encodeURI(`mailto:photographmini_i@yahoo.com?subject=Фотосессия&body=Добрый день!\nМеня зовут ${data.name}.\n${data.place ? `${mapPlaceToMail[data.place]} звучит как интересное место для фотосессии.\n` : ""}Хотелось бы уточнить детали и записаться.\nСо мной можно связаться по номеру: ${data.number}\n\n`))
     };
 
     return (
         <>
             <main className={styles.contact}>
                 <form className={styles.contact__form} onSubmit={handleSubmit(onSubmit)}>
-                    <Input title="Имя" error={errors.name} validationMessage="Это поле обязательно!"
+                    <Input classes={styles.contact_name} title="Имя" error={errors.name}
+                           validationMessage="Это поле обязательно!"
                            props={register("name", {required: true})}/>
 
-                    <Input title="Номер телефона" type="tel"
+                    <Input classes={styles.contact_tel} title="Номер телефона" type="tel"
                            error={errors.number} validationMessage="Это поле обязательно!"
                            props={register("number", {required: true})}/>
-                    <Select title="Место съемки"
+                    <Select classes={styles.contact_place} title="Место съемки"
                             control={control}
                             options={[{label: "", value: ""}, {label: "Студия", value: "studio"}, {
                                 label: "Улица",
@@ -52,7 +62,7 @@ export default function Contact() {
                                 label: "Другое место",
                                 value: "other"
                             }]} props={register("place")}/>
-
+                    <TextArea classes={styles.contact_message} title="Сообщение" props={register("message")}/>
                     <Input type="submit"/>
                 </form>
 

@@ -1,3 +1,5 @@
+@import "../../styles/colors.module";
+
 .button {
   font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 700;
@@ -13,6 +15,10 @@
   @media (min-width: 900px) {
     font-size: 24px;
     line-height: 29px;
+  }
+
+  &:disabled {
+    color: $background-dark;
   }
 
 

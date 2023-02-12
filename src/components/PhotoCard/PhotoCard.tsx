@@ -5,10 +5,11 @@ import styles from './PhotoCard.module.scss'
 
 interface Props {
     img: TPhoto;
+    onClick?: () => void;
     content?: React.ReactNode;
 }
 
-export const PhotoCard = ({img, content}: Props) => {
+export const PhotoCard = ({img, onClick, content}: Props) => {
     const [idx, setIdx] = useState(0);
     useEffect(() => setIdx(img.sizes.findIndex(size => size.type === "w")
         ),
@@ -22,6 +23,7 @@ export const PhotoCard = ({img, content}: Props) => {
                 width={img.sizes[idx].width}
                 height={img.sizes[idx].height}
                 className={styles.card__img}
+                onClick={onClick}
             />
         </div>
     )

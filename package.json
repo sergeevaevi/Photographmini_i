@@ -1,7 +1,7 @@
 {
-  "name": "Photographmini",
+  "name": "photographmini",
   "version": "0.1.0",
-  "homepage": "https://sergeevaevi.github.io//Photographmini_i",
+  "homepage": "https://sergeevaevi.github.io//photographmini_i",
   "private": true,
   "scripts": {
     "predeploy": "npm run build",

@@ -24,6 +24,8 @@ interface ButtonProps {
      */
     onClick?: () => void;
 
+    disabled?: boolean;
+
     classes?: string;
 }
 
@@ -36,10 +38,12 @@ export const Button = ({
                            backgroundColor,
                            classes,
                            label,
+                           disabled,
                            ...props
                        }: ButtonProps) => {
     return (
         <button
+            disabled={disabled}
             type="button"
             className={classNames(classes, styles.button, styles[`button__${size}`], styles[`button__${primary ? "primary" : "secondary"}`])}
             style={{backgroundColor}}

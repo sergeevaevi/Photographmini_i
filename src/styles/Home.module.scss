@@ -78,18 +78,42 @@
   &::-webkit-scrollbar {
     display: none;
   }
+
+  &__photo {
+    height: 100%;
+    width: 100%;
+
+    &_page {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+    }
+
+    &_container {
+      display: flex;
+      max-height: 50%;
+      max-width: 50%;
+    }
+  }
 }
 
 .contact {
   @media (min-width: 900px) {
     width: 100%;
-    padding: 44px;
+    padding: 0 44px 44px;
   }
 
   &__card {
     display: flex;
     align-items: center;
-    gap: 12px
+    gap: 12px;
+
+    &:hover {
+      color: $accent;
+      transition: all 1s;
+    }
   }
 
   &__cards {
@@ -107,16 +131,39 @@
       & p {
         display: block;
       }
+
+    }
+
+  }
+
+  &__title {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 24px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    @media (min-width: 900px) {
+      margin-bottom: 60px;
+      font-size: 36px;
+      line-height: 44px;
+      margin-top: 0px;
+
     }
   }
+
 
   &__form {
     display: flex;
     flex-direction: column;
     padding: 20px 0;
-    gap: 40px;
+
+    gap: 28px;
     @media (min-width: 900px) {
       display: grid;
+      gap: 30px;
+
       grid-template-areas: "nm msg" "nb msg" "pc msg";
     }
   }
@@ -135,5 +182,25 @@
 
   &_name {
     grid-area: nm;
+  }
+
+  &_submit {
+    &:hover input {
+      cursor: pointer;
+      background-color: rgba($secondary, 0.85) !important;
+      transition: all 1s;
+
+    }
+  }
+
+  &_copy {
+    justify-content: center;
+
+    &:hover input {
+      cursor: pointer;
+      background-color: rgba($secondary, 0.85) !important;
+      transition: all 1s;
+
+    }
   }
 }

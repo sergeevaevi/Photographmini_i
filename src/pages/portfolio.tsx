@@ -3,13 +3,15 @@ import {GetStaticProps} from "next";
 import axios from "axios";
 import {TAlbum, TPhoto} from "../types/containers";
 import {PhotoCard} from "../components/PhotoCard/PhotoCard";
+import Link from "next/link";
 
 export default function Portfolio({photos}: { photos: TPhoto[] }) {
     return (
         <>
             <main className={styles.portfolio}>
                 {photos && (photos).map((e: TPhoto, i: number) => (
-                    <PhotoCard img={e} key={i}/>))
+                    <Link href={`/portfolio/${e.id}`}>
+                        <PhotoCard img={e} key={i}/></Link>))
                 }
             </main>
         </>

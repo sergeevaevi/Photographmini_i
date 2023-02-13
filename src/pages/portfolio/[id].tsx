@@ -17,7 +17,6 @@ export default function Photo({photo}: { photo: TPhoto[] }) {
                 <div className={styles.portfolio__photo_container}>
                     {photo?.length && photo?.map((e: TPhoto, i: number) =>
                         <Image
-key={i} 
                             src={e.sizes[getSizeIdx(e)].url}
                             alt="Picture of the author"
                             width={e.sizes[getSizeIdx(e)].width}

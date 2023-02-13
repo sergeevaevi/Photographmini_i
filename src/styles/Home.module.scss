@@ -80,21 +80,31 @@
   }
 
   &__photo {
+
     height: 100%;
     width: 100%;
+
 
     &_page {
       flex: 1;
       display: flex;
       align-items: center;
-      justify-content: center;
 
+      @media (min-width: 900px) {
+        align-items: flex-start;
+
+      }
+      justify-content: center;
+      
     }
 
     &_container {
       display: flex;
-      max-height: 50%;
-      max-width: 50%;
+      @media (min-width: 900px) {
+
+        max-height: 50%;
+        max-width: 50%;
+      }
     }
   }
 }

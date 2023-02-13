@@ -10,7 +10,7 @@ export default function Portfolio({photos}: { photos: TPhoto[] }) {
         <>
             <main className={styles.portfolio}>
                 {photos && (photos).map((e: TPhoto, i: number) => (
-                    <Link href={`/portfolio/${e.id}`}>
+                    <Link href={`/portfolio/${e.id}`} key={i}>
                         <PhotoCard img={e} key={i}/></Link>))
                 }
             </main>

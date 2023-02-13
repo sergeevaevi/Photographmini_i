@@ -9,7 +9,7 @@ import React, {useCallback} from "react";
 export default function Photo({photo}: { photo: TPhoto[] }) {
     const getSizeIdx = useCallback((img: TPhoto) => (img.sizes.findIndex(size => size.type === "w")
         ),
-        [photo]
+        []
     )
     return (
         <>
@@ -17,6 +17,7 @@ export default function Photo({photo}: { photo: TPhoto[] }) {
                 <div className={styles.portfolio__photo_container}>
                     {photo?.length && photo?.map((e: TPhoto, i: number) =>
                         <Image
+key={i} 
                             src={e.sizes[getSizeIdx(e)].url}
                             alt="Picture of the author"
                             width={e.sizes[getSizeIdx(e)].width}

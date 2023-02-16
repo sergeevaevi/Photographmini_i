@@ -8,17 +8,12 @@ import {AlbumCard} from "../components/AlbumCard/AlbumCard";
 export default function Albums({albums}: { albums: TAlbum[] }) {
     return (
         <>
-            <main className={styles.main}>
-                <div className={styles.grid}>
-                    Портфолио
-                    <div>
-                        {albums && (albums).map((e: TAlbum, i: number) => (
-                            <Link href={`/albums/${e.id}`} key={i}>
-                                <AlbumCard album={e}/>
-                            </Link>))
-                        }
-                    </div>
-                </div>
+            <main className={styles.albums}>
+                {albums && (albums).map((e: TAlbum, i: number) => (
+                    <Link href={`/albums/${e.id}`} key={i}>
+                        <AlbumCard album={e}/>
+                    </Link>))
+                }
             </main>
         </>
     )

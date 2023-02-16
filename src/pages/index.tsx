@@ -24,8 +24,12 @@ export default function Home() {
                         <Button label="Портфолио" classes={styles.button__portfolio}/>
                     </Link>
 
+
                     <Link href="/contact" className={styles.card}>
                         <Button label="Контакты" classes={styles.button__contact}/>
+                    </Link>
+                    <Link href="/aboutme" className={styles.card}>
+                        <Button label="Обо мне" classes={styles.button__about}/>
                     </Link>
 
                 </div>

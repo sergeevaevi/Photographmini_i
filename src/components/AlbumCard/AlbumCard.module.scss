@@ -1,3 +1,55 @@
+@import "../../styles/colors.module";
+
 .card {
   display: flex;
+  gap: 12px;
+  flex-direction: column;
+
+  border-radius: 5px;
+  background: $main;
+
+  padding: 16px;
+  height: 100%;
+
+  justify-content: space-between;
+
+  &__title {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 40px;
+    line-height: 49px;
+    text-transform: lowercase;
+  }
+
+  &__description {
+    font-family: 'Anonymous Pro', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 16px;
+  }
+
+  &__dates {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+
+    &_update {
+
+    }
+
+    &_create {
+
+    }
+  }
+
+  &__size {
+
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+  }
 }

@@ -7,8 +7,13 @@ export type TPhoto = {
         url: string,
         type: string
     }[],
+    album_id: string,
 }
 export type TAlbum = {
     id: string,
     title: string,
+    updated?: number,
+    created?: number,
+    size?: number,
+    description?: string
 }

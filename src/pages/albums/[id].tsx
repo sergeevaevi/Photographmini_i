@@ -8,17 +8,10 @@ import {PhotoCard} from "../../components/PhotoCard/PhotoCard";
 export default function Photos({photos}: { photos: TPhoto[] }) {
 
     return (
-        <>
-            <main className={styles.main}>
-                <div className={styles.grid}>
-                    Фото
-                    <div>
-                        {photos?.length && photos?.map((e: TPhoto, i: number) => <PhotoCard key={i} img={e}/>
-                        )}
-                    </div>
-                </div>
-            </main>
-        </>
+        <main className={styles.album}>
+            {photos?.length && photos?.map((e: TPhoto, i: number) => <PhotoCard key={i} img={e}/>
+            )}
+        </main>
     )
 }
 

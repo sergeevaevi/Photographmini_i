@@ -13,6 +13,7 @@ export default function Document() {
                 <meta property="og:url" content="https://sergeevaevi.github.io/photographmini_i/"/>
                 <meta property="og:image" content="https://sergeevaevi.github.io/photographmini_i/photo.jpg"/>
                 <meta property="og:type" content="website"/>
+                <meta name="google-site-verification" content="QOn5RjPCfIcWI3co1JCgpO5Gk_LVm8uNv64tVdOg6Eo"/>
             </Head>
             <body>
             <Main/>

@@ -14,6 +14,7 @@ export default function Document() {
                 <meta property="og:image" content="https://sergeevaevi.github.io/photographmini_i/photo.jpg"/>
                 <meta property="og:type" content="website"/>
                 <meta name="google-site-verification" content="QOn5RjPCfIcWI3co1JCgpO5Gk_LVm8uNv64tVdOg6Eo"/>
+                <meta name="p:domain_verify" content="6dc03ec26092aea6a6e9ad31ea65eb0c"/>
             </Head>
             <body>
             <Main/>

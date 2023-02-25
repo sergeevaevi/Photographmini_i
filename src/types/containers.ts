@@ -8,6 +8,8 @@ export type TPhoto = {
         type: string
     }[],
     album_id: string,
+    likes?: { count: number };
+    date?: number
 }
 export type TAlbum = {
     id: string,

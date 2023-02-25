@@ -22,10 +22,10 @@ export default function Photo({
                 <div className={styles.portfolio__photo_container}>
                     {photo?.length && photo?.map((e: TPhoto, i: number) =>
                         <React.Fragment key={i}>
-                            <Link href={`/portfolio/${nextPhotoID?.prev}`}>
+                            {nextPhotoID?.prev && <Link href={`/portfolio/${nextPhotoID?.prev}`}>
                                 <Image src={Next} alt="Prev"
                                        className={classNames(styles.portfolio__next_left, {[styles.portfolio__next_disabled]: !nextPhotoID?.prev})}/>
-                            </Link>
+                            </Link>}
                             <Image
                                 src={e.sizes[getSizeIdx(e)].url}
                                 alt="Picture of the author"
@@ -33,10 +33,10 @@ export default function Photo({
                                 height={e.sizes[getSizeIdx(e)].height}
                                 className={styles.portfolio__photo} key={i}
                             />
-                            <Link href={`/portfolio/${nextPhotoID?.next}`}>
+                            {nextPhotoID?.next && <Link href={`/portfolio/${nextPhotoID?.next}`}>
                                 <Image src={Next} alt="Next"
                                        className={classNames(styles.portfolio__next_right, {[styles.portfolio__next_disabled]: !nextPhotoID?.next})}/>
-                            </Link>
+                            </Link>}
                         </React.Fragment>
                     )}
                 </div>
@@ -55,7 +55,7 @@ export async function getStaticPaths() {
         const albumPhotos: TPhoto[] = await photoRes.then(res => res.response?.items);
 
         const photosId = albumPhotos?.map(e => e?.id)?.filter(e => e);
-        
+
         const paths = photosId?.map((id) => ({
             params: {id: id?.toString()},
         }))

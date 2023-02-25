@@ -37,6 +37,4 @@ export const getStaticProps: GetStaticProps<{ photos: TPhoto[] }> = async (conte
             }
         }
     }
-
-
 }

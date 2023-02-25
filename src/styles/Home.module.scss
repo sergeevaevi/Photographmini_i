@@ -30,6 +30,32 @@
 
     margin-bottom: 20px;
   }
+
+  &__image {
+    width: 80%;
+
+    & img {
+      border-radius: 10%;
+    }
+  }
+
+  &__block {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    &:nth-child(2n+1) {
+      flex-direction: row-reverse;
+
+      & p {
+        text-align: end;
+      }
+    }
+
+    gap: 12px;
+
+
+  }
 }
 
 .grid {

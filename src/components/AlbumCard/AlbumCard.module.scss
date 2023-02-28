@@ -10,11 +10,19 @@
 
   padding: 16px;
   height: 100%;
-
+  position: relative ;
   justify-content: space-between;
+  overflow: hidden;
+  @media (min-width: 900px) {
+    min-height: 250px;
+  }
+& p, & h6{
+  z-index: 1;
+  text-shadow:  5px 5px 15px $main;;
 
+}
   &__title {
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-style: normal;
     font-weight: 800;
     font-size: 40px;
@@ -23,11 +31,15 @@
   }
 
   &__description {
-    font-family: 'Anonymous Pro', sans-serif;
+    font-family: "Anonymous Pro", sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 16px;
     line-height: 16px;
+  }
+
+  &__image {
+    filter: blur(12px);
   }
 
   &__dates {
@@ -36,16 +48,13 @@
     gap: 12px;
 
     &_update {
-
     }
 
     &_create {
-
     }
   }
 
   &__size {
-
   }
 
   &__bottom {

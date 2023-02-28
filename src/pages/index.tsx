@@ -4,6 +4,8 @@ import styles from '../styles/Home.module.scss'
 import Link from "next/link";
 import React from "react";
 import {Button} from "../components/Button/Button";
+import Image from "next/image";
+import Me from "../assets/me.jpg"
 
 const inter = Inter({subsets: ['latin']})
 
@@ -17,23 +19,25 @@ export default function Home() {
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
             <main className={styles.main}>
+                <div className={styles.main__background_block}>
                 <h1 className={styles.main__title}>Привет!<br/> Меня зовут Лена</h1>
                 <p className={styles.main__subtitle}>И мне нравится фотографировать. Хочешь посмотреть?</p>
                 <div className={styles.button__wrapper}>
                     <Link href="/portfolio" className={styles.card}>
                         <Button label="Портфолио" classes={styles.button__portfolio}/>
                     </Link>
-
-
                     <Link href="/contact" className={styles.card}>
                         <Button label="Контакты" classes={styles.button__contact}/>
                     </Link>
                     <Link href="/aboutme" className={styles.card}>
                         <Button label="Обо мне" classes={styles.button__about}/>
                     </Link>
-
                 </div>
-            </main>
+                </div>
+                <div className={styles.main__background_image}>
+                <Image src={Me} fill alt="me" placeholder='blur' quality={100}/>
+                </div>
+            </main>     
         </>
     )
 }

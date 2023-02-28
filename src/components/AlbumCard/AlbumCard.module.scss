@@ -10,17 +10,29 @@
 
   padding: 16px;
   height: 100%;
+<<<<<<< HEAD
   position: relative;
+=======
+  position: relative ;
+>>>>>>> 28a374b86ad7c10c8d1549aa1d48b7a66c310c1d
   justify-content: space-between;
   overflow: hidden;
   @media (min-width: 900px) {
     min-height: 250px;
   }
+<<<<<<< HEAD
   & p,
   & h6 {
     z-index: 1;
     text-shadow: 5px 5px 15px $main;
   }
+=======
+& p, & h6{
+  z-index: 1;
+  text-shadow:  5px 5px 15px $main;;
+
+}
+>>>>>>> 28a374b86ad7c10c8d1549aa1d48b7a66c310c1d
   &__title {
     font-family: "Montserrat", sans-serif;
     font-style: normal;
@@ -47,6 +59,14 @@
     justify-content: space-between;
     gap: 12px;
 
+<<<<<<< HEAD
+=======
+    &_update {
+    }
+
+    &_create {
+    }
+>>>>>>> 28a374b86ad7c10c8d1549aa1d48b7a66c310c1d
   }
 
   &__size {

@@ -82,6 +82,7 @@ jobs:
           NEXT_PUBLIC_EMAIL: ${{ secrets.NEXT_PUBLIC_EMAIL }}
           NEXT_PUBLIC_EMAIL_PASSWORD: ${{ secrets.NEXT_PUBLIC_EMAIL_PASSWORD }}
           NEXT_PUBLIC_EMAIL_TO: ${{ secrets.NEXT_PUBLIC_EMAIL_TO }}
+          NEXT_PUBLIC_MY_ID: ${{ secrets.NEXT_PUBLIC_MY_ID }}
       - name: Static HTML export with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next export
       - name: Upload artifact

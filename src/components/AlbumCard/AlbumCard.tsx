@@ -31,7 +31,7 @@ export const AlbumCard = ({album, content}: Props) => {
                 </div>}
                 {album?.size && <p className={styles.card__size}>{album.size}</p>}
             </div>
-            {album.thumb_src && <Image src={album.thumb_src} fill className={styles.card__image} alt="cover"  quality={100}/>}
+            {album?.thumb_src && <Image src={album.thumb_src} fill className={styles.card__image} alt="cover" quality={100}/>}
         </div>
     )
 };

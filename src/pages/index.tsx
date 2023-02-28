@@ -35,8 +35,7 @@ export default function Home() {
                 </div>
                 </div>
                 <div className={styles.main__background_image}>
-
-                <Image src={Me} fill alt="me" />
+                <Image src={Me} fill alt="me" placeholder='blur' quality={100}/>
                 </div>
             </main>     
         </>

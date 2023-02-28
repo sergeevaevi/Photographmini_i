@@ -17,5 +17,6 @@ export type TAlbum = {
     updated?: number,
     created?: number,
     size?: number,
-    description?: string
+    description?: string,
+    thumb_src?:string
 }

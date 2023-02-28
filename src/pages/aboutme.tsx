@@ -29,19 +29,19 @@ export default function About({photos}: { photos: TPhoto[] }) {
 
                 <p className={styles.main__subtitle}>В целом занимаюсь фотографией около шести лет: это были съемки
                     пейзажей,
-                    домашние семейные снимки, репортажная съемка и, наконец, портреты.</p>
+                    домашние семейные снимки, репортажная съемка и, наконец, портреты</p>
                 {getPhoto(photos, 1)}
             </div>
             <div className={styles.main__block}>
                 <p className={styles.main__subtitle}>Верю что фотографа делает не оборудование, а прямые руки. Не
                     стесняюсь
-                    обрабатывать фотографии в редакторах, но с легкостью отдаю исходники.</p>
+                    обрабатывать фотографии в редакторах, но с легкостью отдаю исходники</p>
                 {getPhoto(photos, 2)}
             </div>
 
             <div className={styles.main__block}>
                 <p className={styles.main__subtitle}>Перед фотосессией была бы очень рада отобрать референсы, любимым
-                    инструментом здесь выступает Pinterest.</p>
+                    инструментом здесь выступает Pinterest</p>
                 {getPhoto(photos, 3)}
             </div>
 

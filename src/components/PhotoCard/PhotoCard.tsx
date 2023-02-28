@@ -3,8 +3,6 @@ import {TPhoto} from "../../types/containers";
 import Image from "next/image";
 import styles from './PhotoCard.module.scss'
 import classNames from "classnames";
-import loader from '../public/loader.png'
-
 
 const keyStr =
   'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/='
@@ -49,6 +47,7 @@ export const PhotoCard = ({img, onClick, content, sizeType = "w", classes}: Prop
                 onClick={onClick}
                 placeholder='blur' quality={100}
                 blurDataURL={rgbDataURL(50, 50, 50)}
+                quality={100}
             />
         </div>
     )

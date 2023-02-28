@@ -17,7 +17,7 @@ export default function About({photos}: { photos: TPhoto[] }) {
     )
     return (
         <main className={styles.about}>
-            <h1 className={styles.main__title}>обо мне</h1>
+            <h1 className={styles.main__title}>Немного обо мне</h1>
             <div className={styles.main__block}>
                 <p className={styles.main__subtitle}>Мне {new Date().getFullYear() - new Date(1999, 4, 31).getUTCFullYear()},
                     работаю веб-программистом. Фотография для меня дополнительный источник заработка, но в первую

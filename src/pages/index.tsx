@@ -1,13 +1,10 @@
 import Head from 'next/head'
-import {Inter} from '@next/font/google'
 import styles from '../styles/Home.module.scss'
 import Link from "next/link";
 import React from "react";
 import {Button} from "../components/Button/Button";
 import Image from "next/image";
 import Me from "../assets/me.jpg"
-
-const inter = Inter({subsets: ['latin']})
 
 export default function Home() {
     return (

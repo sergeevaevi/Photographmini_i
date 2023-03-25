@@ -3,23 +3,6 @@ import {TPhoto} from "../../types/containers";
 import Image from "next/image";
 import styles from './PhotoCard.module.scss'
 import classNames from "classnames";
-import loader from '../public/loader.png'
-
-
-const keyStr =
-  'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/='
-
-const triplet = (e1: number, e2: number, e3: number) =>
-  keyStr.charAt(e1 >> 2) +
-  keyStr.charAt(((e1 & 3) << 4) | (e2 >> 4)) +
-  keyStr.charAt(((e2 & 15) << 2) | (e3 >> 6)) +
-  keyStr.charAt(e3 & 63)
-
-const rgbDataURL = (r: number, g: number, b: number) =>
-  `data:image/gif;base64,R0lGODlhAQABAPAA${
-    triplet(0, r, g) + triplet(b, 255, 255)
-  }/yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==`
-
 
 const keyStr =
   'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/='
@@ -64,10 +47,6 @@ export const PhotoCard = ({img, onClick, content, sizeType = "w", classes}: Prop
                 onClick={onClick}
                 placeholder='blur' quality={100}
                 blurDataURL={rgbDataURL(50, 50, 50)}
-<<<<<<< HEAD
-                quality={100}
-=======
->>>>>>> 28a374b86ad7c10c8d1549aa1d48b7a66c310c1d
             />
         </div>
     )

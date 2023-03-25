@@ -34,7 +34,7 @@ export const PhotoCard = ({img, onClick, content, sizeType = "w", classes}: Prop
             setIdx(i !== -1 ? i : 0);
         }
         ,
-        [img]
+        [img, sizeType]
     )
     return (
         <div className={classNames(styles.card, classes)}>

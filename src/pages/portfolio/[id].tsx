@@ -80,16 +80,15 @@ export const getStaticProps: GetStaticProps<{ photo: TPhoto[] }> = async (
 
         const allPhotosRes = axios.get(`https://api.vk.com/method/photos.get?owner_id=-${process.env.NEXT_PUBLIC_OWNER_ID}&access_token=${process.env.NEXT_PUBLIC_ACCESS_TOKEN}&v=${process.env.NEXT_PUBLIC_VK_VERSION}&album_id=${albumID}`).then(res => res.data);
         const allPhotos: TPhoto[] = await allPhotosRes.then(res => res.response?.items);
-
-        const current = allPhotos.findIndex(e => e.id.toString() === context?.params?.id?.toString());
-        console.log(allPhotos?.[current - 1]?.id, allPhotos?.[current + 1]?.id)
-
+        const allPhotosSorted = allPhotos.sort((a, b)=> new Date(a?.date!) > new Date(b?.date!) ? -1 : 1);
+        const current = allPhotosSorted.findIndex(e => e.id.toString() === context?.params?.id?.toString());
 
         return {
             props: {
                 photo: photo,
-                nextPhotoID: {next: allPhotos?.[current - 1]?.id ?? null, prev: allPhotos?.[current + 1]?.id ?? null}
-            }
+                nextPhotoID: {next: allPhotosSorted?.[current - 1]?.id ?? null, prev: allPhotosSorted?.[current + 1]?.id ?? null}
+            },
+            revalidate: 10
         }
     } catch (err) {
         return {

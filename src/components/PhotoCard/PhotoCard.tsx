@@ -3,8 +3,6 @@ import {TPhoto} from "../../types/containers";
 import Image from "next/image";
 import styles from './PhotoCard.module.scss'
 import classNames from "classnames";
-import loader from '../public/loader.png'
-
 
 const keyStr =
   'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/='

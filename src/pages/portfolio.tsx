@@ -9,7 +9,7 @@ export default function Portfolio({photos}: { photos: TPhoto[] }) {
     return (
         <>
             <main className={styles.portfolio}>
-                {photos && (photos).map((e: TPhoto, i: number) => (
+                {photos && (photos).sort((a, b)=> new Date(a?.date!) > new Date(b?.date!) ? -1 : 1).map((e: TPhoto, i: number) => (
                     <Link href={`/portfolio/${e.id}`} key={i}>
                         <PhotoCard img={e} key={i}/></Link>))
                 }
@@ -29,6 +29,7 @@ export const getStaticProps: GetStaticProps<{ photos: TPhoto[] }> = async (conte
             props: {
                 photos,
             },
+            revalidate: 10
         }
     } catch (err) {
         return {

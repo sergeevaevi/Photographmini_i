@@ -7,6 +7,7 @@ import React, {useCallback} from "react";
 import Next from "../../assets/next.svg"
 import Link from "next/link";
 import classNames from "classnames";
+import { useRouter } from 'next/router';
 
 export default function Photo({
                                   photo,
@@ -16,6 +17,7 @@ export default function Photo({
         ),
         []
     )
+    const router = useRouter();
     return (
         <>
             <main className={styles.portfolio__photo_page}>
@@ -26,13 +28,15 @@ export default function Photo({
                                 <Image src={Next} alt="Prev"
                                        className={classNames(styles.portfolio__next_left, {[styles.portfolio__next_disabled]: !nextPhotoID?.prev})}/>
                             </Link>}
-                            <Image
+                             <Image
                                 src={e.sizes[getSizeIdx(e)].url}
                                 alt="Picture of the author"
                                 width={e.sizes[getSizeIdx(e)].width}
                                 height={e.sizes[getSizeIdx(e)].height}
                                 className={styles.portfolio__photo} key={i}
+                                quality={100}
                             />
+                           
                             {nextPhotoID?.next && <Link href={`/portfolio/${nextPhotoID?.next}`}>
                                 <Image src={Next} alt="Next"
                                        className={classNames(styles.portfolio__next_right, {[styles.portfolio__next_disabled]: !nextPhotoID?.next})}/>
@@ -51,14 +55,14 @@ export async function getStaticPaths() {
         const res = axios.get(`https://api.vk.com/method/photos.getAlbums?owner_id=-${process.env.NEXT_PUBLIC_OWNER_ID}&access_token=${process.env.NEXT_PUBLIC_ACCESS_TOKEN}&v=${process.env.NEXT_PUBLIC_VK_VERSION}`).then(res => res.data);
         const albums: TAlbum[] = await res.then(res => res.response?.items);
         const portfolioID = albums.find(e => e.title.includes("портфолио"))?.id;
-        const photoRes = axios.get(`https://api.vk.com/method/photos.get?owner_id=-${process.env.NEXT_PUBLIC_OWNER_ID}&access_token=${process.env.NEXT_PUBLIC_ACCESS_TOKEN}&v=${process.env.NEXT_PUBLIC_VK_VERSION}&album_id=${portfolioID}`).then(res => res.data);
+        const photoRes = axios.get(`https://api.vk.com/method/photos.get?owner_id=-${process.env.NEXT_PUBLIC_OWNER_ID}&access_token=${process.env.NEXT_PUBLIC_ACCESS_TOKEN}&v=${process.env.NEXT_PUBLIC_VK_VERSION}&album_id=${portfolioID}&rev=1`).then(res => res.data);
         const albumPhotos: TPhoto[] = await photoRes.then(res => res.response?.items);
-
         const photosId = albumPhotos?.map(e => e?.id)?.filter(e => e);
-
+        
         const paths = photosId?.map((id) => ({
             params: {id: id?.toString()},
         }))
+
         return {paths, fallback: false}
     } catch (err) {
         console.log(err)
@@ -78,7 +82,7 @@ export const getStaticProps: GetStaticProps<{ photo: TPhoto[] }> = async (
 
         const albumID = photos?.[0]?.album_id;
 
-        const allPhotosRes = axios.get(`https://api.vk.com/method/photos.get?owner_id=-${process.env.NEXT_PUBLIC_OWNER_ID}&access_token=${process.env.NEXT_PUBLIC_ACCESS_TOKEN}&v=${process.env.NEXT_PUBLIC_VK_VERSION}&album_id=${albumID}`).then(res => res.data);
+        const allPhotosRes = axios.get(`https://api.vk.com/method/photos.get?owner_id=-${process.env.NEXT_PUBLIC_OWNER_ID}&access_token=${process.env.NEXT_PUBLIC_ACCESS_TOKEN}&v=${process.env.NEXT_PUBLIC_VK_VERSION}&album_id=${albumID}&rev=1`).then(res => res.data);
         const allPhotos: TPhoto[] = await allPhotosRes.then(res => res.response?.items);
         const allPhotosSorted = allPhotos.sort((a, b)=> new Date(a?.date!) > new Date(b?.date!) ? -1 : 1);
         const current = allPhotosSorted.findIndex(e => e.id.toString() === context?.params?.id?.toString());

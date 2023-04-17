@@ -96,6 +96,14 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+body > #nprogress .bar {
+  background: #C4CC6B;
+ }
+body > #nprogress .peg {
+  box-shadow: 0 0 10px rgb(250, 250, 250), 0 0 5px rgb(255, 255, 255);
+  
+ }
+
 a {
   color: inherit;
   text-decoration: none;
@@ -106,3 +114,4 @@ a {
     color-scheme: dark;
   }
 }
+

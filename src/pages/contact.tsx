@@ -99,7 +99,7 @@ export default function Contact() {
                     icon: WA,
                     title: "WhatsApp",
                     text: "WhatsApp",
-                    link: "https://wa.me/79147959926?text=hi"
+                    link: "https://wa.me/79147959926?text=Добрый день! Интересуюсь по поводу фотосессии"
                 },
                     {
                         icon: IM,

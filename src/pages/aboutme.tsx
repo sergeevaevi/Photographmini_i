@@ -1,65 +1,78 @@
 import styles from "../styles/Home.module.scss";
 import Link from "next/link";
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Button } from "../components/Button/Button";
 import { GetStaticProps } from "next";
 import { TAlbum, TPhoto } from "../types/containers";
 import axios from "axios";
 import { PhotoCard } from "../components/PhotoCard/PhotoCard";
+import classNames from "classnames";
 
 const fiveMay2019 = 1494000000;
 
+const aboutMe = [
+  `Приятно познакомиться!\n Мне ${Math.abs(
+    new Date(
+      new Date().getTime() - new Date(1999, 4, 31).getTime()
+    ).getUTCFullYear() - 1970
+  )}, работаю веб-программистом и для меня фотография - это прекрасный способ отдохнуть и расслабиться`,
+  `В целом занимаюсь фотографией около шести лет: это были съемки пейзажей, домашние семейные снимки, репортажная съемка и, наконец, портреты`,
+  `Множество различных курсов помогли мне увидеть основные принципы построения хорошего кадра, но не огранчили фантазию - потому что иногда правила созданы для того чтобы их нарушать!`,
+  `Снимаю на Canon EOS D-серии, при необходимости могу поснимать на телефон :)`,
+  `Не стесняюсь обрабатывать фотографии в редакторах Photoshop, ретуширую лучшие кадры, но с легкостью отдаю исходники`,
+  `Перед фотосессией была бы очень рада отобрать референсы, любимым инструментом здесь выступает Pinterest`,
+  `Прогулочная фотосессия - мой любимый вариант съемки, но и студией меня не напугать)`,
+  `Всегда открыта новым идеям и готова выслушать ваши предложения!`,
+];
 export default function About({ photos }: { photos: TPhoto[] }) {
   const getPhoto = useCallback(
     (images: TPhoto[], index: number) =>
       images?.[index] ? (
-        <PhotoCard img={images[index]} classes={styles.main__image} />
+        <PhotoCard
+          img={images[index]}
+          classes={classNames(styles.main__image, {
+            [styles.main__image_vertical]:
+              images[index]?.sizes?.[0].width <
+              images[index]?.sizes?.[0].height,
+          })}
+        />
       ) : null,
     []
   );
+
+  const [aciveCard, setAciveCard] = useState(0);
+  const ref = useRef<HTMLDivElement>(null);
+  console.log(photos);
+  useEffect(() => {
+    ref?.current &&
+      ref.current.scrollIntoView({
+        block: "center",
+        inline: "center",
+        behavior: "smooth",
+      });
+  }, [aciveCard]);
   return (
     <main className={styles.about}>
-      <h1 className={styles.main__title}>обо мне</h1>
-      <div className={styles.main__block}>
-        <p className={styles.main__subtitle}>
-          Мне{" "}
-          {new Date().getFullYear() - new Date(1999, 4, 31).getUTCFullYear()},
-          работаю веб-программистом. Фотография для меня дополнительный источник
-          заработка, но в первую очередь способ отдохнуть и расслабиться
-          <div className={styles.main__block}>
-            <p className={styles.main__subtitle}>
-              В целом занимаюсь фотографией около шести лет: это были съемки
-              пейзажей, домашние семейные снимки, репортажная съемка и, наконец,
-              портреты
-            </p>
-            {getPhoto(photos, 1)}
+      <div className={styles.about__block}>
+        {aboutMe.map((e, index) => (
+          <div
+            className={classNames(styles.about__card, {
+              [styles.about__card_next]: aciveCard === index,
+            })}
+            key={index}
+            ref={aciveCard === index ? ref : undefined}
+            onClick={() => setAciveCard(index)}
+            onAnimationEnd={() =>
+              setAciveCard(index === aboutMe.length - 1 ? 0 : index + 1)
+            }
+          >
+            <div className={styles.about__card_photo}>
+              {getPhoto(photos, index)}
+            </div>
+            <p className={styles.about__card_text}>{e}</p>
           </div>
-        </p>
-        {getPhoto(photos, 0)}
+        ))}
       </div>
-
-      <div className={styles.main__block}>
-        <p className={styles.main__subtitle}>
-          Верю что фотографа делает не оборудование, а прямые руки. Не стесняюсь
-          обрабатывать фотографии в редакторах, но с легкостью отдаю исходники<div className={styles.main__block}>
-        <p className={styles.main__subtitle}>
-          Перед фотосессией была бы очень рада отобрать референсы, любимым
-          инструментом здесь выступает Pinterest{" "}
-         </p> {getPhoto(photos, 4)}
-        
-      </div>
-        </p>
-        {getPhoto(photos, 2)}
-      </div>
-      
-         <div className={styles.main__block}>
-           {getPhoto(photos, 5)}
-            <p className={styles.main__subtitle}>
-              Всегда открыта новым идеям и готова выслушать ваши предложения!
-           {getPhoto(photos, 3)}
-            </p>
-          </div>
-
       <div className={styles.button__wrapper}>
         <Link href="/albums" className={styles.card}>
           <Button label="Все фото" classes={styles.button__portfolio} />

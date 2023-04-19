@@ -7,6 +7,7 @@ export type TPhoto = {
         url: string,
         type: string
     }[],
+    square_crop: string;
     album_id: string,
     likes?: { count: number };
     date?: number

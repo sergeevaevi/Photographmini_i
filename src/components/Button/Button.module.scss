@@ -1,7 +1,7 @@
 @import "../../styles/colors.module";
 
 .button {
-  font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 700;
   border: 0;
   border-radius: 5px;
@@ -20,13 +20,15 @@
   &:disabled {
     color: $background-dark;
   }
-
+  &:hover {
+    filter: brightness(0.8);
+    transition: filter 0.5s;
+  }
 
   &__primary {
     color: white;
     background-color: #1ea7fd;
   }
-
 
   &__secondary {
     color: #333;

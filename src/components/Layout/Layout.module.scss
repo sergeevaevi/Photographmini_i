@@ -32,19 +32,16 @@
     position: relative;
     bottom: auto;
     background: none;
-
   }
-
 
   &__landing {
     display: none;
   }
 }
 
-
 .button {
   color: $secondary;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   @media (min-width: 900px) {
     font-style: normal;
     font-weight: 400;
@@ -57,16 +54,17 @@
     color: $main !important;
 
     &:hover {
+      color: $main !important;
       background-color: rgba($secondary, 1) !important;
-      transition: all 1s;
+      transition: all 1s !important;
     }
   }
 
   &:hover {
-    background-color: rgba($secondary, 0.1);
-    transition: all 1s;
+    color: $secondary;
+    background-color: rgba($secondary, 0.3);
+    transition: all 1s !important;
   }
-
 }
 
 @keyframes rotate {

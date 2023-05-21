@@ -42,7 +42,6 @@ export default function About({ photos }: { photos: TPhoto[] }) {
 
   const [aciveCard, setAciveCard] = useState(0);
   const ref = useRef<HTMLDivElement>(null);
-  console.log(photos);
   useEffect(() => {
     ref?.current &&
       ref.current.scrollIntoView({

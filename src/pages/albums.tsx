@@ -28,7 +28,6 @@ export const getStaticProps: GetStaticProps<{ albums: TAlbum[] }> = async (conte
                 albums,
             },
             revalidate: 10
-
         }
     } catch {
         return {

@@ -153,7 +153,7 @@
       top: 12px;
       right: 12px;
       @media (min-width: 900px) {
-        right: 56px;
+        right: 80px;
       }
     }
   }
@@ -284,6 +284,7 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 12px;
   overflow: scroll;
+  width: 100%;
 
   &::-webkit-scrollbar {
     display: none;

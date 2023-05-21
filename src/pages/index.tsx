@@ -20,6 +20,7 @@ export default function Home() {
           <h1 className={styles.main__title}>
             Привет!
             <br /> Меня зовут Лена
+            <br /> И я фотограф в Ростове-на-Дону
           </h1>
           {/* <p className={styles.main__subtitle}>
             И мне нравится фотографировать. Хочешь посмотреть?

@@ -1,11 +1,11 @@
 import React from "react";
-import styles from "./Layout.module.scss";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Inter } from "@next/font/google";
 import classNames from "classnames";
 import { Button } from "../../components/Button/Button";
 import Head from "next/head";
+import styles from "./Layout.module.scss";
 
 interface Props {
   children: React.ReactNode;

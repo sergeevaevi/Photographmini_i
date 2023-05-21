@@ -1,4 +1,3 @@
-import styles from "../styles/Home.module.scss";
 import Link from "next/link";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Button } from "../components/Button/Button";
@@ -7,6 +6,7 @@ import { TAlbum, TPhoto } from "../types/containers";
 import axios from "axios";
 import { PhotoCard } from "../components/PhotoCard/PhotoCard";
 import classNames from "classnames";
+import styles from "../styles/Home.module.scss";
 
 const fiveMay2019 = 1494000000;
 

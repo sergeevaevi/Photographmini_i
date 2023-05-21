@@ -41,16 +41,13 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.12",
-    "@storybook/addon-actions": "^6.5.16",
-    "@storybook/addon-essentials": "^7.0.12",
-    "@storybook/addon-interactions": "^6.5.16",
-    "@storybook/addon-links": "^6.5.16",
-    "@storybook/builder-webpack5": "^6.5.16",
-    "@storybook/manager-webpack5": "^6.5.16",
     "@storybook/react": "^7.0.12",
     "@storybook/testing-library": "^0.0.13",
     "@types/nprogress": "^0.2.0",
     "babel-loader": "^8.3.0",
     "eslint-plugin-storybook": "^0.6.10"
+  },
+  "overrides": {
+    "glob-parent": "5.1.2"
   }
 }
